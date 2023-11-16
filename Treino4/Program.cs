@@ -12,9 +12,10 @@ namespace Treino{
                 Console.WriteLine("1-Calculo triangulo.");
                 Console.WriteLine("2-Segunda atividade pegar info pessoas");
                 Console.WriteLine("3-terceira atividade, media salarial");
+                Console.WriteLine("4-");
                 Console.WriteLine("0-Sair.");
                 menu = int.Parse(Console.ReadLine());
-                if (menu == 1){ 
+                if (menu == 1) {
                     Triangulo x, y; // não basta declarar variaveis do tipo de classe, tem que instanciar
                     x = new Triangulo(); // instanciando as variaveis declaradas
                     y = new Triangulo(); // instanciando as variaveis compostas
@@ -29,22 +30,19 @@ namespace Treino{
                     y.B = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
                     y.C = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
 
-                    double p = (x.A + x.B + x.C) / 2.0;
-                    double areaA = Math.Sqrt(p * p);
-
-                    double q = (y.A + y.B + y.C) / 2.0;
-                    double areaB = Math.Sqrt(q * (q - y.A) * (q - y.B) * (q - y.C));
+                    double areaA = x.Area();
+                    double areaB = y.Area();
 
                     Console.WriteLine("Área do primeiro triangulo = " + areaA.ToString("F4", CultureInfo.InvariantCulture));
                     Console.WriteLine("Área do segundo triangulo = " + areaB.ToString("F4", CultureInfo.InvariantCulture));
 
-                    if ((areaA > areaB)){
+                    if (areaA > areaB) {
                         Console.WriteLine("Maior área é o primeiro triangulo");
                     }
-                    else{
+                    else {
                         Console.WriteLine("Maior área é o segundo Triangulo");
                     }
-                } else if (menu == 2){
+                } else if (menu == 2) {
                     Pessoa individuo1, individuo2;
                     individuo1 = new Pessoa();
                     individuo2 = new Pessoa();
@@ -62,7 +60,7 @@ namespace Treino{
                     Console.WriteLine("o nome da primeira pessoa é " + individuo1.nome + " e a idade é " + individuo1.idade);
                     Console.WriteLine("O nome da segunda pessoa é " + individuo2.nome + " e a idade é " + individuo2.idade);
 
-                } else if (menu == 3){
+                } else if (menu == 3) {
                     salariado trabalhador1, trabalhador2;
                     trabalhador1 = new salariado();
                     trabalhador2 = new salariado();
@@ -82,10 +80,22 @@ namespace Treino{
 
                     float media = (trabalhador1.salario + trabalhador2.salario) / 2;
 
-                    Console.WriteLine("A media salarial entre os 2 é: {0}", media );
+                    Console.WriteLine("A media salarial entre os 2 é: {0}", media);
 
+                } else if (menu == 4){ 
+                    Produtos produto = new Produtos();
+
+                    Console.WriteLine("");
+                    Console.Write("Nome: ");
+                    produto.Nome = Console.ReadLine();
+                    Console.Write("Preço: ");
+                    produto.Preco = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+                    Console.Write("Quantidade no estoque: ");
+                    produto.Quantidade = int.Parse(Console.ReadLine());
+
+                    Console.WriteLine("Dados do produto: \nNome: {0};\nPreço: {1};\nQuantidade: {2}", produto.Nome, produto.Preco, produto.Quantidade);
                 } else {
-
+                    Console.WriteLine("");
                 }
 
             } while(menu != 0);

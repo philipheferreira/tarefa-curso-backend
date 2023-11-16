@@ -9,5 +9,10 @@ namespace Treino4 {
         public double A; // atributo criado na classe triangulo
         public double B; // atributo criado na classe triangulo
         public double C; // atributo criado na classe triangulo
+
+        public double Area(){
+            double p = (A + B + C) / 2.0;
+            return Math.Sqrt(p * (p - A) * (p - B) * (p - C));
+        }
     }
 }
